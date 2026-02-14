@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: spotter-trip-planner
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ORS_API_KEY
+        sync: false
+      - key: PYTHON_VERSION
+        value: "3.9.18"
